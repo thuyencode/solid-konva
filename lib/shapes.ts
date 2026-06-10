@@ -1,0 +1,22 @@
+import { createEntity } from "./entity";
+import type { TransformerEvents } from "./types";
+
+export const Group = createEntity("Group");
+export const Rect = createEntity("Rect");
+export const Circle = createEntity("Circle");
+export const Ellipse = createEntity("Ellipse");
+export const Wedge = createEntity("Wedge");
+export const Line = createEntity("Line");
+export const Sprite = createEntity("Sprite");
+export const Image = createEntity("Image");
+export const Text = createEntity("Text");
+export const TextPath = createEntity("TextPath");
+export const Star = createEntity("Star");
+export const Ring = createEntity("Ring");
+export const Arc = createEntity("Arc");
+export const Tag = createEntity("Tag");
+export const Path = createEntity("Path");
+export const RegularPolygon = createEntity("RegularPolygon");
+export const Arrow = createEntity("Arrow");
+export const Shape = createEntity("Shape");
+export const Transformer = createEntity<TransformerEvents>("Transformer");

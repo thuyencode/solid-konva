@@ -1,45 +1,41 @@
 {
-  "name": "solid-konva",
-  "version": "0.1.6",
-  "description": "Solid.js bindings for Konva.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lawrencecchen/solid-konva.git"
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "@rollup/plugin-typescript": "^8.3.3",
-    "@types/node": "^18.0.6",
-    "@unocss/preset-mini": "^0.44.2",
-    "@unocss/vite": "^0.44.2",
-    "tslib": "^2.4.0",
-    "typescript": "^4.7.4",
-    "vite": "^3.0.0",
-    "vite-plugin-solid": "^2.3.0"
-  },
-  "dependencies": {
-    "@solid-primitives/resize-observer": "^2.0.2",
-    "@unocss/reset": "^0.44.5",
-    "konva": "^8.3.10",
-    "solid-js": "^1.4.7"
-  },
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/solid-konva.umd.cjs",
-  "module": "./dist/solid-konva.js",
-  "exports": {
-    ".": {
-      "import": "./dist/solid-konva.js",
-      "require": "./dist/solid-konva.umd.cjs"
-    }
-  },
-  "types": "./dist/index.d.ts",
-  "author": "Lawrence Chen"
+	"name": "solid-konva",
+	"version": "0.1.6",
+	"description": "Solid.js bindings for Konva.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lawrencecchen/solid-konva.git"
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"serve": "vite preview"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"@rollup/plugin-typescript": "^12.3.0",
+		"@types/node": "^25.9.2",
+		"typescript": "^6.0.3",
+		"vite": "^8.0.16",
+		"vite-plugin-solid": "^2.11.12"
+	},
+	"dependencies": {
+		"@solid-primitives/resize-observer": "^2.1.5",
+		"konva": "^10.3.0",
+		"solid-js": "^1.9.13"
+	},
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/solid-konva.umd.cjs",
+	"module": "./dist/solid-konva.js",
+	"exports": {
+		".": {
+			"import": "./dist/solid-konva.js",
+			"require": "./dist/solid-konva.umd.cjs"
+		}
+	},
+	"types": "./dist/index.d.ts",
+	"author": "Lawrence Chen"
 }

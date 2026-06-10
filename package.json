@@ -13,10 +13,10 @@
 	},
 	"license": "MIT",
 	"devDependencies": {
-		"@rollup/plugin-typescript": "^12.3.0",
 		"@types/node": "^25.9.2",
 		"typescript": "^6.0.3",
 		"vite": "^8.0.16",
+		"vite-plugin-dts": "^5.0.2",
 		"vite-plugin-solid": "^2.11.12"
 	},
 	"dependencies": {
@@ -32,10 +32,11 @@
 	"module": "./dist/solid-konva.js",
 	"exports": {
 		".": {
+			"types": "./dist/lib/index.d.ts",
 			"import": "./dist/solid-konva.js",
 			"require": "./dist/solid-konva.umd.cjs"
 		}
 	},
-	"types": "./dist/index.d.ts",
+	"types": "./dist/lib/index.d.ts",
 	"author": "Lawrence Chen"
 }

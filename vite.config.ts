@@ -1,7 +1,7 @@
 import path, { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import typescript from "@rollup/plugin-typescript";
 import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
 import solidPlugin from "vite-plugin-solid";
 
 const dirname =
@@ -10,11 +10,18 @@ const dirname =
 		: path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-	plugins: [solidPlugin()],
+	plugins: [
+		solidPlugin(),
+		dts({
+			include: resolve(dirname, "lib"),
+			outDirs: [resolve(dirname, "dist")],
+			tsconfigPath: resolve(dirname, "tsconfig.json"),
+		}),
+	],
 	build: {
 		target: "esnext",
 		lib: {
-			entry: resolve(dirname, "lib/index.tsx"),
+			entry: resolve(dirname, "lib/index.ts"),
 			name: "solid-konva",
 			// the proper extensions will be added
 			fileName: "solid-konva",
@@ -31,16 +38,6 @@ export default defineConfig({
 					konva: "Konva",
 				},
 			},
-			plugins: [
-				typescript({
-					target: "es2020",
-					rootDir: resolve(dirname, "./lib"),
-					declaration: true,
-					declarationDir: resolve(dirname, "./dist"),
-					exclude: resolve(dirname, "./node_modules/**"),
-					allowSyntheticDefaultImports: true,
-				}),
-			],
 		},
 	},
 });

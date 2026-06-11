@@ -22,9 +22,31 @@ function toKonvaEvent(key: string): string {
 	return name;
 }
 
-export function createEntity<T>(shapeName: keyof typeof Konva) {
-	function Entity(props: ShapeConfig & KonvaEvents & T) {
-		let prevProps: Partial<ShapeConfig & KonvaEvents & T> = {};
+type KonvaConfig<T> = T extends new (
+	...args: any[]
+) => any
+	? NonNullable<ConstructorParameters<T>[0]>
+	: {};
+
+type ShapeConstructors = {
+	[K in keyof typeof Konva]: (typeof Konva)[K] extends new (
+		...args: any[]
+	) => Konva.Shape | Konva.Group
+		? K
+		: never;
+}[keyof typeof Konva];
+
+export function createEntity<
+	T = {},
+	K extends ShapeConstructors = ShapeConstructors,
+>(shapeName: K) {
+	type ShapeConfigType = ShapeConfig &
+		KonvaEvents &
+		T &
+		KonvaConfig<(typeof Konva)[K]>;
+
+	function Entity(props: ShapeConfigType) {
+		let prevProps: Partial<ShapeConfigType> = {};
 
 		const [entity, setEntity] = createSignal<Konva.Shape>();
 		const layer = useLayer();

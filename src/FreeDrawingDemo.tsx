@@ -1,5 +1,5 @@
 import type Konva from "konva";
-import { createEffect, createSignal, onCleanup } from "solid-js";
+import { createEffect, createSignal, For, onCleanup } from "solid-js";
 import { createStore } from "solid-js/store";
 import { Layer, Line, Stage, useStage } from "../lib";
 
@@ -51,22 +51,21 @@ function DrawingCanvas(props: { tool: () => string }) {
 	});
 
 	return (
-		<>
-			{lines.map((line) => (
+		<For each={lines}>
+			{(line) => (
 				<Line
-					{...{
-						points: line.points,
-						stroke: "#df4b26",
-						strokeWidth: 5,
-						tension: 0.5,
-						lineCap: "round",
-						lineJoin: "round",
-						globalCompositeOperation:
-							line.tool === "eraser" ? "destination-out" : "source-over",
-					}}
+					points={line.points}
+					stroke="#df4b26"
+					strokeWidth={5}
+					tension={0.5}
+					lineCap="round"
+					lineJoin="round"
+					globalCompositeOperation={
+						line.tool === "eraser" ? "destination-out" : "source-over"
+					}
 				/>
-			))}
-		</>
+			)}
+		</For>
 	);
 }
 
